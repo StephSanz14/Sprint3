@@ -1,12 +1,21 @@
 <div class="row">
-    @for (p of products; track p) {
-    <div class="card col-md-12 mb-3"> <!-- md-3 o md-12 -->
-      <img [src]="p.img" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+    
+  @for (p of productsCard; track p) {
+  <div class="card"[ngClass]="{
+    'col-md-3': typeChangeCard === 'grid', 
+    'col-md-12': typeChangeCard === 'list',
+    'cardSize': typeChangeCard === 'list',
+    'mt-3':typeChangeCard==='list'
+  }">
+  > 
+    <img [src]="p.img" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{p.name}}</h5>
+      <p class="card-text">{{p.description}}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <small style="color: blue;"><span>{{p.price | currency: 'MXN'}}</span></small>
+        <button type="button" class="btn btn-primary">Agregar al carrito</button>
       </div>
     </div>
-  }
   </div>
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './button.component.css'
 })
 export class ButtonComponent {
-
+  /* Declaramos variables */
+  @Output () typeChange=new EventEmitter<string>();
+    fnSelect(selected:string){
+      this.typeChange.emit(selected);
+    }
 }
+ 
